@@ -1,0 +1,65 @@
+<div id="main-wrapper">
+  <app-navbar></app-navbar>
+  <div class="content-body" style="margin-top: 3%;">
+    <div class="container-fluid">
+  <div class="row">
+
+    <div class="col-lg-12">
+      <div class="row tab-content">
+        <div id="list-view" class="tab-pane fade active show col-lg-12">
+          <div class="card">
+            <div class="card-header">
+              <h4 class="card-title" style="color: #FF5330; font-size:18px;font-weight: bold;">Liste des Commandes</h4>
+              <div class="search-box" style="width: 20%;margin-left: 45%;">
+                <i class="la la-search"></i>
+                <input type="text" class="form-control" placeholder="Search&hellip;">
+            </div></div>
+
+            <div class="card-body">
+              <div class="table-responsive">
+                <table id="example3" class="display" style="min-width: 980px">
+                  <thead  style="color:#2B2B68;">
+                    <tr>
+                      <th>Id</th>
+                      <th>Nom Client</th>
+                      <th>Prenom</th>
+                      <th>Telephone </th>
+                      <th>Email</th>
+                      <th>Adresse </th>
+                      <th>Prix Total</th>
+                      <th>Statut</th>
+                      <th>Action</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let order of orders  | paginate: { itemsPerPage: 5, currentPage: p } ">
+                      <td><strong><a href="detail-order/{{order.orderId}}">{{order.orderId}}</a></strong></td>
+                      <td style="text-align:center ;">{{order.lastName}}</td>
+                      <td style="text-align:center ;">{{order.nom_et_prenom}}</td>
+                      <td style="text-align:center ;">{{order.tel}}</td>
+                      <td style="text-align:center ;">{{order.email}}</td>
+                      <td style="text-align:center ;">{{order.adress}}</td>
+                      <td style="text-align:center ;">{{order.prix_de_vente}}</td>
+                      <td style="text-align:center ;">{{order.statut}}</td>
+                      <td>
+                        <select *ngIf="order.statut=='en cours'" (change)="change($event.target,order.id)">
+                          <option value="en cours">--Select--</option>
+                          <option value="Livrée">Livrée</option>
+                          <option value="Retour">Retour</option>
+                        </select>
+                      </td>
+                    </tr>
+
+                  </tbody>
+                </table>
+              </div>
+              <pagination-controls (pageChange)="p = $event"></pagination-controls>
+            </div>
+          </div>
+        </div>
+
+    </div>
+  </div>
+  </div>
+</div>
+</div>

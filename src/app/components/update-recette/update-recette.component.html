@@ -1,0 +1,100 @@
+<div id="main-wrapper">
+    <app-navbar></app-navbar>
+    <div class="content-body" style="margin-top: 3%">
+      <div class="row">
+        <div class="col-xl-12 col-xxl-12 col-sm-12">
+          <div class="card">
+            <div class="card-header">
+              <h5
+                class="card-title"
+                style="color: #ff5330; font-size: 18px; font-weight: bold"
+              >
+                Modifier une recette
+              </h5>
+            </div>
+            <div class="card-body">
+              <form (ngSubmit)="onSubmit()" [formGroup]="form">
+                <div class="row">
+                  <div class="col-lg-6 col-md-6 col-sm-12">
+                    <div class="form-group">
+                      <label
+                        class="form-label"
+                        style="color: #2b2b68; font-weight: bold"
+                        >Nom Recette</label
+                      >
+                      <input
+                        type="text"
+                        class="form-control"
+                        (change)="nameChange($event.target)"
+                        ngModel="nomRecette"
+                      />
+                    </div>
+                  </div>
+                  <div class="col-lg-6 col-md-6 col-sm-12">
+                    <div class="form-group">
+                      <label
+                        class="form-label"
+                        style="color: #2b2b68; font-weight: bold"
+                        >Produits</label
+                      >
+                      <ng-select
+                        *ngIf="ProductList"
+                        class="form-control"
+                        formControlName="productId"
+                        id="productId"
+                        [multiple]="true"
+                        [(ngModel)]="products"
+                      >
+                        <ng-option value="0">-Select-</ng-option>
+                        <ng-option
+                          *ngFor="let item of ProductList"
+                          [value]="item.code"
+                        >
+                          {{ item.name }}
+                        </ng-option>
+                      </ng-select>
+                    </div>
+                  </div>
+                  <div class="col-lg-6 col-md-6 col-sm-12">
+                    <div class="form-group">
+                      <label
+                        class="form-label"
+                        style="color: #2b2b68; font-weight: bold"
+                        >Description</label>
+                      <textarea
+                        class="form-control"
+                        formControlName="description"
+                        id="description"
+                        (change)="desc($event.target)"
+                      ></textarea>
+                    </div>
+                  </div>
+                  <div class="col-lg-12 col-md-12 col-sm-12">
+                    <div class="form-group fallback w-100">
+                      <label
+                        class="form-label"
+                        style="color: #2b2b68; font-weight: bold"
+                        >Image</label
+                      >
+                      <br />
+                      <input type="file" class="dropify" data-default-file="" formControlName="imageUrl" id="imageUrl" placeholder="imageUrl" (change)="img($event.target)"/>
+                    </div>
+                  </div>
+                  <div class="col-lg-12 col-md-12 col-sm-12">
+                    <button
+                      type="submit"
+                      class="btn btn-primary"
+                      style="background-color: #ff5330; border-color: #ff5330"
+                    >
+                      Modifier
+                    </button>
+                    <!-- <button type="submit" class="btn btn-light">Cencel</button> -->
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

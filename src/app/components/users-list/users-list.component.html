@@ -1,0 +1,64 @@
+<div id="main-wrapper">
+
+  <app-navbar></app-navbar>
+  <div class="content-body" style="margin-top: 3%;">
+    <div class="container-fluid">
+    <div class="row">
+
+      <div class="col-lg-12">
+        <div class="row tab-content">
+          <div id="list-view" class="tab-pane fade active show col-lg-12">
+            <div class="card">
+              <div class="card-header" >
+                <h4 class="card-title" style="color: #FF5330; font-size:18px;font-weight: bold;">Liste Clients </h4>
+                <div class="search-box" style="width: 20%;margin-left: 50%;">
+                  <i class="la la-search"></i>
+                  <input type="text" class="form-control" placeholder="Search&hellip;" [(ngModel)]="word">
+              </div>
+              </div>
+
+              <div class="card-body">
+                <div class="table-responsive">
+                  <table id="example3" class="table table-sm mb-0 table-striped" style="min-width: 950px">
+                    <thead style="color:#2B2B68;">
+                      <tr>
+                        <th>Image</th>
+                        <th>Prenom</th>
+                        <th>Nom</th>
+                        <th>Telephone</th>
+                        <th>Email</th>
+                        <th>Profession</th>
+                        <th>situation Familiale</th>
+                        <th>Adresse</th>
+                        <th>Ville</th>
+                        <th>Gouvernorat</th>
+                        <th>Date</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="let user of users | paginate: { itemsPerPage: 5, currentPage: p }">
+                        <td><img class="rounded-circle" width="50" src="data:image/png;base64,{{user.image}}" alt="" style="margin-top:20px ;"></td>
+                        <td >{{user.nom_et_prenom}}</td>
+                        <td >{{user.lastName}}</td>
+                        <td >{{user.tel}}</td>
+                        <td >{{user.email}}</td>
+                        <td >{{user.profession}}</td>
+                        <td >{{user.situationFamiliale}}</td>
+                        <td >{{user.adress}}</td>
+                        <td >{{user.ville}}</td>
+                        <td >{{user.gouvernorat}}</td>
+                        <td >{{user.date}}</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+                <pagination-controls (pageChange)="p = $event"></pagination-controls>
+              </div>
+            </div>
+          </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+</div>

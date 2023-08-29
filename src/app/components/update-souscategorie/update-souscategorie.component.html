@@ -1,0 +1,127 @@
+<!-- <mat-toolbar >
+
+
+  <h1>Modifier une sous-catégorie</h1>
+
+</mat-toolbar>
+
+   <div class="col-md-12 col-md-offset-2">
+            <form  (ngSubmit)="onSubmit()"  [formGroup]="form">
+              <div class="form-group">
+                <label>Catégorie </label>
+             <select class="form-control" formControlName="categoryId" id="categoryId" (change)="onChange($event.target)" name="cat">
+                 <option value="0">-Select-</option>
+              <option *ngFor="let item of CategorieList" value="{{item.categoryId}}">{{item.categoryName}}</option>
+               </select>
+              </div>
+
+             <div class="form-group">
+                <label>Nom sous-catégorie</label>
+                <input type="text" class="form-control" [(ngModel)]="subcategoryName" [ngModelOptions]="{standalone: true}" (change)="name($event.target)">
+              </div>
+              <div class="form-group">
+                <label>Description</label>
+                <input type="text" class="form-control" formControlName="description" id="description" [(ngModel)]="description" (change)="desc($event.target)">
+              </div>
+              <div class="form-group">
+                <label>Image</label>
+                <input type="file" class="form-control" formControlName="imageUrl" id="imageUrl" placeholder="imageUrl" (change)="img($event.target)">
+              </div>
+              <div class="form-group">
+                <button type="submit" class="btn btn-dark"><i class="fa fa-database"></i> Ajouter</button>
+                <button type="button" class="btn btn-outline-dark ml-1" [mat-dialog-close]><i class="fa fa-close"></i> fermer</button>
+        </div>
+            </form>
+</div> -->
+
+<div id="main-wrapper">
+  <app-navbar></app-navbar>
+  <div class="content-body" style="margin-top: 3%">
+    <div class="row">
+      <div class="col-xl-12 col-xxl-12 col-sm-12">
+        <div class="card">
+          <div class="card-header">
+            <h5 class="card-title">Modifier une sous-catégorie</h5>
+          </div>
+          <div class="card-body">
+            <form  (ngSubmit)="onSubmit()" [formGroup]="form">
+              <div class="row">
+                <div class="col-lg-6 col-md-6 col-sm-12">
+                  <div class="form-group">
+                    <label
+                      class="form-label"
+                      style="color: #2b2b68; font-weight: bold"
+                      >Catégorie</label
+                    >
+                    <select
+                      *ngIf="CategorieList"
+                      class="form-control"
+                      formControlName="idcategorie"
+                      id="idcategorie"
+                      (change)="onChange($event.target)"
+                      name="cat"
+                    >
+                      <option value="0">-Select-</option>
+                      <option
+                        *ngFor="let item of CategorieList"
+                        value="{{ item.idcategorie}}"
+                      >
+                        {{ item.nomcategorie }}
+                      </option>
+                    </select>
+                  </div>
+                </div>
+
+                <div class="col-lg-6 col-md-6 col-sm-12">
+                  <div class="form-group">
+                    <label
+                      class="form-label"
+                      style="color: #2b2b68; font-weight: bold"
+                      >Nom sous-catégorie</label
+                    >
+                    <input type="text" class="form-control" [(ngModel)]="nomsouscat" [ngModelOptions]="{standalone: true}" (change)="name($event.target)">
+                  </div>
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-12">
+                  <div class="form-group">
+                    <label
+                      class="form-label"
+                      style="color: #2b2b68; font-weight: bold"
+                      >Description</label
+                    >
+                    <textarea class="form-control" formControlName="description" id="description" [(ngModel)]="description" (change)="desc($event.target)"></textarea>
+                  </div>
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-12"></div>
+                <div class="col-lg-6 col-md-6 col-sm-12">
+                <img src="{{ImgUrl}}" style="width:35vw" >
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-12">
+                  <div class="form-group fallback w-100">
+                    <label
+                      class="form-label"
+                      style="color: #2b2b68; font-weight: bold"
+                      >Image</label
+                    >
+                    <br />
+                    <input type="file" class="dropify" data-default-file="" formControlName="imageUrl" id="imageUrl" placeholder="imageUrl" (change)="img($event.target)"/>
+                  </div>
+                </div>
+                <div class="col-lg-12 col-md-12 col-sm-12">
+                  <button
+                    type="submit"
+                    class="btn btn-primary"
+                    style="background-color: #ff5330; border-color: #ff5330"
+                  >
+                    Modifier
+                  </button>
+                  <!-- <button type="submit" class="btn btn-light">Cencel</button> -->
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

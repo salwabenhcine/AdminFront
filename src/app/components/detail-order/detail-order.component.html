@@ -1,0 +1,81 @@
+<div id="main-wrapper">
+  <app-navbar></app-navbar>
+  <div class="content-body">
+    <!-- row -->
+    <div class="container-fluid">
+
+        <div class="row page-titles mx-0">
+            <div class="col-sm-6 p-md-0">
+                <div class="welcome-text">
+                    <h4>Detail de la commande</h4>
+                </div>
+            </div>
+        </div>
+
+  <div class="row">
+  <div class="col-xl-3 col-xxl-4 col-lg-4">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="card">
+          <div class="card-header">
+            <h2 class="card-title">Coordonnées du client</h2>
+          </div>
+          <div class="card-body pb-0">
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item d-flex px-0 justify-content-between">
+                <strong>Nom</strong>
+                <span class="mb-0">{{order.lastName}}</span>
+              </li>
+              <li class="list-group-item d-flex px-0 justify-content-between">
+                <strong>Prenom</strong>
+                <span class="mb-0">{{order.nom_et_prenom}}</span>
+              </li>
+              <li class="list-group-item d-flex px-0 justify-content-between">
+                <strong>Telephone</strong>
+                <span class="mb-0">{{order.tel}}</span>
+              </li>
+              <li class="list-group-item d-flex px-0 justify-content-between">
+                <strong>Email</strong>
+                <span class="mb-0">{{order.email}}</span>
+              </li>
+              <li class="list-group-item d-flex px-0 justify-content-between">
+                <strong>Adresse</strong>
+                <span class="mb-0">{{order.adress}}</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-xl-9 col-xxl-8 col-lg-8">
+    <div class="card">
+      <div class="card-body"><div class="table-responsive">
+        <table id="example3" class="display" style="min-width: 980px">
+          <thead  style="color:#2B2B68;">
+            <tr>
+              <th style="text-align:center ;">ID</th>
+              <th style="text-align:center ;">Nom </th>
+              <th style="text-align:center ;">Code à barre</th>
+              <th style="text-align:center ;">Prix</th>
+              <th style="text-align:center ;">Quantité </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr  *ngFor="let order of orders">
+              <td><strong>{{order.product.id}}</strong></td>
+              <td style="text-align:center ;">{{order.product.name}}</td>
+              <td style="text-align:center ;">{{order.product.codeBarre}}</td>
+              <td style="text-align:center ;">{{order.product.price}}</td>
+              <td style="text-align:center ;">{{order.qty}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div></div>
+    </div>
+  </div>
+  </div>
+
+    </div>
+  </div>
+</div>

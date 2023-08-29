@@ -1,0 +1,76 @@
+<div id="main-wrapper">
+  <app-navbar></app-navbar>
+  <div class="content-body" style="margin-top: 3%">
+    <div class="row">
+      <div class="col-xl-12 col-xxl-12 col-sm-12">
+        <div class="card">
+          <div class="card-header">
+            <h5
+              class="card-title"
+              style="color: #ff5330; font-size: 18px; font-weight: bold"
+            >
+              Ajouter une Marque
+            </h5>
+          </div>
+          <div class="card-body">
+            <form [formGroup]="form" (ngSubmit)="onSubmit()">
+              <div class="row">
+                <div class="col-lg-6 col-md-6 col-sm-12">
+                  <div class="form-group">
+                    <label
+                      class="form-label"
+                      style="color: #2b2b68; font-weight: bold"
+                      >Nom Marque</label
+                    >
+                    <input type="text" class="form-control" formControlName="nommarque" id="nommarque" [(ngModel)]="nommarque" placeholder="Nom du marque">
+                  </div>
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-12">
+                  <div class="form-group">
+                    <label
+                      class="form-label"
+                      style="color: #2b2b68; font-weight: bold"
+                      >Telephone</label
+                    >
+                    <input type="text" class="form-control" formControlName="teleMarque" id="teleMarque" placeholder="Téléphone"  [(ngModel)]="teleMarque">
+                  </div>
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-12">
+                  <div class="form-group">
+                    <label
+                      class="form-label"
+                      style="color: #2b2b68; font-weight: bold"
+                      >Email</label
+                    >
+                    <input type="text" class="form-control" formControlName="emailMarque" id="emailMarque" placeholder="emailMarque" [(ngModel)]="emailMarque">
+                  </div>
+                </div>
+                <div class="col-lg-12 col-md-12 col-sm-12">
+                  <div class="form-group fallback w-100">
+                    <label
+                      class="form-label"
+                      style="color: #2b2b68; font-weight: bold"
+                      >Logo</label
+                    >
+                    <br />
+                    <input type="file" class="dropify" data-default-file="" formControlName="logo" id="logo" placeholder="logo" (change)="img($event.target)"/>
+                  </div>
+                </div>
+                <div class="col-lg-12 col-md-12 col-sm-12">
+                  <button
+                    type="submit"
+                    class="btn btn-primary"
+                    style="background-color: #ff5330; border-color: #ff5330"
+                  >
+                    Ajouter
+                  </button>
+                  <!-- <button type="submit" class="btn btn-light">Cancel</button> -->
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

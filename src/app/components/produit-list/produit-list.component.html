@@ -1,0 +1,143 @@
+<div id="main-wrapper">
+  <app-navbar></app-navbar>
+  <div class="content-body" style="margin-top: 3%;">
+    <div class="container-fluid">
+
+
+
+      <!-- <mat-toolbar >
+  <div>
+    Liste des Produits
+  </div>
+</mat-toolbar>
+
+<br>
+<div>
+  <input type="search" placeholder="Search" [(ngModel)]="word" (keyup.enter)="search()"/>
+  <a class="btn btn-outline-success" (click)="addProduit()">
+    <i class="fa fa-plus-square"></i> Create New</a>
+
+</div>
+<hr>
+<div>
+  <div class="table-responsive">
+      <table class="table table-bordered table-responsive-sm table-responsive-md
+ table-responsive-lg">
+          <thead>
+              <tr>
+                  <th scope="col">ID</th>
+                  <th scope="col">Nom </th>
+                  <th scope="col">Code à barre</th>
+                  <th scope="col">Description </th>
+                  <th scope="col">Catégorie</th>
+                  <th scope="col">Sous-catégorie</th>
+                  <th scope="col">Marque</th>
+                  <th scope="col">Prix</th>
+                  <th scope="col">Unité</th>
+                  <th scope="col">Etat</th>
+                  <th scope="col">Quantité </th>
+                  <th scope="col">Image</th>
+                  <th class="text-center" scope="col">Action</th>
+              </tr>
+
+          </thead>
+          <tbody>
+              <tr *ngFor="let produit of produits ">
+                  <td>{{produit.id}}</td>
+                  <td>{{produit.name}}</td>
+                  <td>{{produit.codeBarre}}</td>
+                  <td>{{produit.description}}</td>
+                  <td>{{produit.categoryName}}</td>
+                  <td>{{produit.subcategoryName}}</td>
+                  <td>{{produit.nomMarque}}</td>
+                  <td>{{produit.price}}</td>
+                  <td>{{produit.unite}}</td>
+                  <td>{{produit.available}}</td>
+                  <td>{{produit.qte}}</td>
+
+                 <td><a ><img class="card-img-top img-responsive"
+                  src="data:image/png;base64,{{produit.imageURL}}"
+                  style = "height :100px;width:200px"
+                 alt=""></a></td>
+                 <td>
+                  <mat-icon (click)="editData(produit.id)">update</mat-icon>
+                  <mat-icon (click)="removeData(produit.id)">delete_outline</mat-icon>
+                </td>
+
+              </tr>
+          </tbody>
+      </table>
+  </div>
+  <pagination-controls (pageChange)="p = $event"></pagination-controls>
+</div> -->
+<div class="row">
+
+  <div class="col-lg-12">
+    <div class="row tab-content">
+      <div id="list-view" class="tab-pane fade active show col-lg-12">
+        <div class="card">
+          <div class="card-header">
+            <h4 class="card-title" style="color: #FF5330; font-size:18px;font-weight: bold;">Liste des Produits</h4>
+            <div class="search-box" style="width: 20%;margin-left: 50%;">
+              <i class="la la-search"></i>
+              <input type="text" class="form-control" placeholder="Search&hellip;" [(ngModel)]="word" (keyup.enter)="search()">
+          </div>
+            <a href="/add-produit" class="btn btn-primary" style="background-color: #FF5330; border-color: #FF5330;">+ Ajouter Produit</a>
+          </div>
+
+          <div class="card-body">
+            <div class="table-responsive">
+              <table id="example3" class="display" style="min-width: 980px">
+                <thead  style="color:#2B2B68;">
+                  <tr>
+                    <th style="text-align:center ;">Image</th>
+                    <th style="text-align:center ;">ID</th>
+                    <th style="text-align:center ;">Nom </th>
+                    <th style="text-align:center ;">Code à barre</th>
+                    <th style="text-align:center ;">Description </th>
+                    <th style="text-align:center ;">Catégorie</th>
+                    <th style="text-align:center ;">Sous-catégorie</th>
+                    <th style="text-align:center ;">Marque</th>
+                    <th style="text-align:center ;">Prix</th>
+                    <th style="text-align:center ;">Unité</th>
+                    <th style="text-align:center ;">Etat</th>
+                    <th style="text-align:center ;">Quantité </th>
+
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <!--  *ngFor="let produit of produits | paginate: { itemsPerPage: 5, currentPage: p }" -->
+                  <tr  *ngFor="let produit of produits | paginate: { itemsPerPage: 5, currentPage: p }">
+                    <td><img class="rounded-circle" width="50" src="data:image/png;base64,{{produit.imageURL}}" alt="" style="margin-top:20px ;"></td>
+                    <td><strong>{{produit.code}}</strong></td>
+                    <td style="text-align:center ;">{{produit.name}}</td>
+                  <td style="text-align:center ;">{{produit.codebarre}}</td>
+                  <td style="text-align:center ;">{{produit.description}}</td>
+                  <td style="text-align:center ;">{{produit.categories.nomcategorie}}</td>
+                  <td style="text-align:center ;">{{produit.souscategories.nomsouscat}}</td>
+                  <td style="text-align:center ;">{{produit.marques.nommarque}}</td>
+                  <td style="text-align:center ;">{{produit.prix_de_vente}}</td>
+                  <td style="text-align:center ;">{{produit.unite}}</td>
+                  <td style="text-align:center ;">{{produit.available}}</td>
+                  <td style="text-align:center ;">{{produit.qte}}</td>
+                    <td>
+                      <a (click)="editData(produit.code)" class="btn btn-sm btn-primary"><i class="la la-pencil"></i></a>
+                      <a (click)="removeData(produit.code)" class="btn btn-sm btn-danger"><i class="la la-trash-o"></i></a>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <pagination-controls (pageChange)="p = $event"></pagination-controls>
+          </div>
+
+        </div>
+      </div>
+
+  </div>
+</div>
+</div>
+
+    </div>
+  </div>

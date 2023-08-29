@@ -1,0 +1,282 @@
+<div id="main-wrapper">
+  <app-navbar></app-navbar>
+  <div class="content-body" style="margin-top: 3%">
+    <!-- <mat-toolbar >
+
+
+  <h1>Ajouter une sous-catégorie</h1>
+
+</mat-toolbar>
+
+   <div class="col-md-12 col-md-offset-2">
+            <form  (ngSubmit)="onSubmit()"  [formGroup]="form">
+              <div class="form-group">
+                <label>Catégorie </label>
+             <select class="form-control" formControlName="categoryId" id="categoryId" (change)="onChange($event.target)"
+             >
+                 <option value="0">-Select-</option>
+              <option *ngFor="let item of CategorieList" value="{{item.categoryId}}">{{item.categoryName}}</option>
+               </select>
+              </div>
+              <div class="form-group">
+                <label>Sous-catégorie </label>
+             <select class="form-control" formControlName="subCategoryId" id="subCategoryId" (change)="onChangeSubCategory($event.target)"
+             >
+                 <option value="0">-Select-</option>
+              <option *ngFor="let item of currentSubCategories" value="{{item.subCategoryId}}">{{item.subcategoryName}}</option>
+               </select>
+              </div>
+
+             <div class="form-group">
+                <label>Nom Produit</label>
+                <input type="text" class="form-control" (change)="nameChange($event.target)" [(ngModel)]="name">
+              </div>
+              <div class="form-group">
+                <label>Description</label>
+                <input type="text" class="form-control" formControlName="description" id="description" (change)="desc($event.target)">
+              </div>
+              <div class="form-group">
+                <label>Code à barre</label>
+                <input type="text" class="form-control" formControlName="codeBarre" id="codeBarre" [(ngModel)]="codeBarre">
+              </div>
+              <div class="form-group">
+                <label>Marque </label>
+             <select class="form-control" formControlName="marqueId" id="marqueId" (change)="onChangeMarque($event.target)"
+             >
+                 <option value="0">-Select-</option>
+              <option *ngFor="let item of marques" value="{{item.marqueId}}">{{item.nomMarque}}</option>
+               </select>
+              </div>
+              <div class="form-group">
+                <label>Prix</label>
+                <input type="number" class="form-control" formControlName="price" id="price" (change)="prix($event.target)" [(ngModel)]="price">
+              </div>
+              <div class="form-group">
+                <label>Quantité</label>
+                <input type="number" class="form-control" formControlName="qte" id="qte" (change)="quantite($event.target)" [(ngModel)]="qte">
+              </div>
+              <div class="form-group">
+                <label>Statut</label>
+                <select class="form-control" formControlName="available" id="available" (change)="availableChange($event.target)">
+                  <option value="0">-Select-</option>
+                 <option value="true">disponible</option>
+                 <option value="false">bloqué</option>
+                </select>               </div>
+              <div class="form-group">
+                <label>Unité</label>
+                <input type="text" class="form-control" formControlName="unite" id="unite" (change)="unit($event.target)" [(ngModel)]="unite">
+              </div>
+              <div class="form-group">
+                <label>Image</label>
+                <input type="file" class="form-control" formControlName="imageUrl" id="imageUrl" placeholder="imageUrl" (change)="img($event.target)">
+              </div>
+              <div class="form-group">
+                <button type="submit" class="btn btn-dark"><i class="fa fa-database"></i> Ajouter</button>
+                <button type="button" class="btn btn-outline-dark ml-1" [mat-dialog-close]><i class="fa fa-close"></i> fermer</button>
+        </div>
+            </form>
+</div>  -->
+
+    <div class="row">
+      <div class="col-xl-12 col-xxl-12 col-sm-12">
+        <div class="card">
+          <div class="card-header">
+            <h5
+              class="card-title"
+              style="color: #ff5330; font-size: 18px; font-weight: bold"
+            >
+              Ajouter un produit
+            </h5>
+          </div>
+          <div class="card-body">
+            <form (ngSubmit)="onSubmit()" [formGroup]="form">
+              <div class="row">
+                <div class="col-lg-6 col-md-6 col-sm-12">
+                  <div class="form-group">
+                    <label
+                      class="form-label"
+                      style="color: #2b2b68; font-weight: bold"
+                      >Catégorie</label
+                    >
+                    <select
+                      *ngIf="CategorieList"
+                      class="form-control"
+                      formControlName="idcategorie"
+                      id="idcategorie"
+                      (change)="onChange($event.target)"
+                    >
+                      <option value="0">-Select-</option>
+                      <option
+                        *ngFor="let item of CategorieList"
+                        value="{{ item.idcategorie }}"
+                      >
+                        {{ item.nomcategorie }}
+                      </option>
+                    </select>
+                  </div>
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-12">
+                  <div class="form-group">
+                    <label
+                      class="form-label"
+                      style="color: #2b2b68; font-weight: bold"
+                      >Sous-catégorie</label
+                    >
+                    <select
+                      *ngIf="currentSubCategories"
+                      class="form-control"
+                      formControlName="idsouscategorie"
+                      id="idsouscategorie"
+                      (change)="onChangeSubCategory($event.target)"
+                    >
+                      <option value="0">-Select-</option>
+                      <option
+                        *ngFor="let item of currentSubCategories"
+                        value="{{ item.idsouscategorie }}"
+                      >
+                        {{ item.nomsouscat }}
+                      </option>
+                    </select>
+                  </div>
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-12">
+                  <div class="form-group">
+                    <label
+                      class="form-label"
+                      style="color: #2b2b68; font-weight: bold"
+                      >Nom Produit</label
+                    >
+                    <input
+                      type="text"
+                      class="form-control"
+                      (change)="nameChange($event.target)"
+                      [(ngModel)]="name"
+                    />
+                  </div>
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-12">
+                  <div class="form-group">
+                    <label
+                      class="form-label"
+                      style="color: #2b2b68; font-weight: bold"
+                      >Description</label>
+                    <textarea
+                      class="form-control"
+                      formControlName="description"
+                      id="description"
+                      (change)="desc($event.target)"
+                    ></textarea>
+                  </div>
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-12">
+                  <div class="form-group">
+                    <label
+                      class="form-label"
+                      style="color: #2b2b68; font-weight: bold"
+                      >Code à barre</label
+                    >
+                    <input
+                      type="text"
+                      class="form-control"
+                      formControlName="codebarre"
+                      id="codebarre"
+                      [(ngModel)]="codebarre"
+                    />
+                  </div>
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-12">
+                  <div class="form-group">
+                    <label
+                      class="form-label"
+                      style="color: #2b2b68; font-weight: bold"
+                      >Marque</label
+                    >
+                    <select
+                      class="form-control"
+                      formControlName="idmarque"
+                      id="idmarque"
+                      (change)="onChangeMarque($event.target)"
+                    >
+                      <option value="0">-Select-</option>
+                      <option
+                        *ngFor="let item of marques"
+                        value="{{ item.idmarque }}"
+                      >
+                        {{ item.nomMarque }}
+                      </option>
+                    </select>
+                  </div>
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-12">
+                  <div class="form-group">
+                    <label
+                      class="form-label"
+                      style="color: #2b2b68; font-weight: bold"
+                      >Prix</label
+                    >
+                    <input type="number" class="form-control" formControlName="prix_de_vente" id="prix_de_vente"(change)="prix($event.target)" [(ngModel)]="prix_de_vente">
+                  </div>
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-12">
+                  <div class="form-group">
+                    <label
+                      class="form-label"
+                      style="color: #2b2b68; font-weight: bold"
+                      >Quantité</label
+                    >
+                    <input type="number" class="form-control" formControlName="qte" id="qte" (change)="quantite($event.target)" [(ngModel)]="qte">
+                  </div>
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-12">
+                  <div class="form-group">
+                    <label
+                      class="form-label"
+                      style="color: #2b2b68; font-weight: bold"
+                      >Statut</label
+                    >
+                    <select class="form-control" formControlName="available" id="available" (change)="availableChange($event.target)">
+                      <option value="0">-Select-</option>
+                     <option value="true">disponible</option>
+                     <option value="false">bloqué</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-12">
+                  <div class="form-group">
+                    <label
+                      class="form-label"
+                      style="color: #2b2b68; font-weight: bold"
+                      >Unité</label
+                    >
+                    <input type="text" class="form-control" formControlName="unite" id="unite" (change)="unit($event.target)" [(ngModel)]="unite">
+                  </div>
+                </div>
+                <div class="col-lg-12 col-md-12 col-sm-12">
+                  <div class="form-group fallback w-100">
+                    <label
+                      class="form-label"
+                      style="color: #2b2b68; font-weight: bold"
+                      >Image</label
+                    >
+                    <br />
+                    <input type="file" class="dropify" data-default-file="" formControlName="imageUrl" id="imageUrl" placeholder="imageUrl" (change)="img($event.target)"/>
+                  </div>
+                </div>
+                <div class="col-lg-12 col-md-12 col-sm-12">
+                  <button
+                    type="submit"
+                    class="btn btn-primary"
+                    style="background-color: #ff5330; border-color: #ff5330"
+                  >
+                    Ajouter
+                  </button>
+                  <!-- <button type="submit" class="btn btn-light">Cencel</button> -->
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
